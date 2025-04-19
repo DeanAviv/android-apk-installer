@@ -1,0 +1,55 @@
+﻿<Window x:Class="ApkInstaller.GUI.InstallWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ApkInstaller.GUI"
+        mc:Ignorable="d"
+        Title="InstallWindow" Height="450" Width="800" Background="Black" Foreground="White">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Instructions -->
+        <TextBlock Grid.Row="0" Text = "Select a folder with APK files to begin installation. You can drag and drop or enter the path manually."
+                   FontSize="14" Foreground="White" TextWrapping="Wrap" Margin="0,0,0,10"/>
+
+        <!-- Directory Input + APK List -->
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <TextBox Name="FolderPathTextBox" Height="30" AllowDrop="True" 
+                     Text="Drag a folder here or enter a path..." 
+                     Background="#222" Foreground="White" Margin="0,0,0,10"/>
+
+            <ListBox Name="ApkListBox" Background="#111" Foreground="White" BorderBrush="Gray" Height="280">
+                <ListBoxItem Content="com.example.app1.apk"/>
+                <ListBoxItem Content="com.example.app2.apk"/>
+            </ListBox>
+        </StackPanel>
+
+        <!-- Action Buttons -->
+        <DockPanel Grid.Row="2" Margin="0,10,0,0" LastChildFill="False">
+            <DockPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Width" Value="140" />
+                    <Setter Property="Height" Value="40" />
+                    <Setter Property="Padding" Value="5" />
+                    <Setter Property="Margin" Value="5" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="Background" Value="#444" />
+                    <Setter Property="FontFamily" Value="Segoe UI" />
+                    <Setter Property="FontSize" Value="14" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                </Style>
+            </DockPanel.Resources>
+
+            <Button Content="Install All" DockPanel.Dock="Left"/>
+            <Button Content="Clean Install" DockPanel.Dock="Left"/>
+            <Button Content="Back" DockPanel.Dock="Left" Click="BackButton_Click"/>
+            <Button Content="Exit" DockPanel.Dock="Right" HorizontalAlignment="Right"/>
+        </DockPanel>
+    </Grid>
+</Window>
