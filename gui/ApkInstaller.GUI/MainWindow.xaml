@@ -63,7 +63,7 @@
             </DockPanel.Resources>
 
             <Button Content="Scan for Devices" Name="RefreshButton" DockPanel.Dock="Left"/>
-            <Button Content="Select APK Folder" Name="SelectFilesButton" DockPanel.Dock="Left"/>
+            <Button Content="Select APK Folder" Name="SelectFilesButton" DockPanel.Dock="Left" Click="SelectFilesButton_Click"/>
             <Button Content="Exit App" Name="CloseButton" DockPanel.Dock="Right" HorizontalAlignment="Right"/>
         </DockPanel>
     </Grid>

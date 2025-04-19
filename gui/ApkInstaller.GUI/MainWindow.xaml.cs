@@ -20,5 +20,12 @@ namespace ApkInstaller.GUI
         {
             InitializeComponent();
         }
+
+        private void SelectFilesButton_Click(object sender, RoutedEventArgs e)
+        {
+            var installWindow = new InstallWindow();
+            installWindow.Show();
+            this.Hide(); // Optional
+        }
     }
 }
