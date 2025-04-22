@@ -29,19 +29,20 @@
         <!-- Device List -->
         <GroupBox Grid.Row="1" Header="Connected Devices" Foreground="White">
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="3*" />
-                </Grid.ColumnDefinitions>
-                <ListBox Grid.Column="0" Name="DeviceListBox" Foreground="White" Background="Black" BorderBrush="Gray">
-                    <ListBoxItem Content="Device 1" Foreground="White"/>
-                    <ListBoxItem Content="Device 2" Foreground="White"/>
-                    <ListBoxItem Content="Device 3" Foreground="White"/>
-                </ListBox>
-                <ListBox Grid.Column="1" Name="DeviceDetailsBox" Foreground="White" Background="Black" BorderBrush="Gray">
-                    <ListBoxItem Content="Model: Pixel 5" Foreground="White"/>
-                    <ListBoxItem Content="Model: Galaxy S21" Foreground="White"/>
-                    <ListBoxItem Content="Model: OnePlus 8" Foreground="White"/>
+                <ListBox Name="DeviceListBox"
+                         ItemsSource="{Binding Devices}"
+                         Foreground="White"
+                         Background="Black"
+                         BorderBrush="Gray"
+                         Margin="5">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="0,5">
+                                <TextBlock Text="{Binding Model}" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding DeviceId}" FontSize="12" Foreground="Gray"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
                 </ListBox>
             </Grid>
         </GroupBox>
@@ -62,8 +63,8 @@
                 </Style>
             </DockPanel.Resources>
 
-            <Button Content="Scan for Devices" Name="RefreshButton" DockPanel.Dock="Left"/>
-            <Button Content="Select APK Folder" Name="SelectFilesButton" DockPanel.Dock="Left" Click="SelectFilesButton_Click"/>
+            <Button Content="Scan for Devices" DockPanel.Dock="Left" Command="{Binding RefreshDevicesCommand}" />
+            <Button Content="Select APK Folder" Name="SelectFilesButton" DockPanel.Dock="Left" Click="SelectFilesButton_Click" />
             <Button Content="Exit App" Name="CloseButton" DockPanel.Dock="Right" HorizontalAlignment="Right"/>
         </DockPanel>
     </Grid>
