@@ -13,6 +13,29 @@ namespace ApkInstaller.GUI
 
         public ICommand RefreshDevicesCommand { get; }
 
+        private bool _isAdbAvailable = true;
+        public bool IsAdbAvailable
+        {
+            get => _isAdbAvailable;
+            set
+            {
+                _isAdbAvailable = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _statusMessage = "Welcome to the Android APK Installer!";
+        public string StatusMessage
+        {
+            get => _statusMessage;
+            set
+            {
+                _statusMessage = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         public MainWindowViewModel()
         {
             RefreshDevicesCommand = new RelayCommand(RefreshDevices);
@@ -25,12 +48,21 @@ namespace ApkInstaller.GUI
 
             Devices.Clear();
             var found = _adbManager.GetConnectedDevices();
-
-            foreach (var device in found)
+            if (found.Count == 0)
             {
-                Console.WriteLine($"Found device: {device}");
-                Devices.Add(device);
+                IsAdbAvailable = false;
+                StatusMessage = "⚠️ ADB not found. Please install ADB and ensure it's added to PATH.";
             }
+            else
+            {
+                IsAdbAvailable = true;
+                StatusMessage = "Welcome to the Android APK Installer!";
+                foreach (var device in found)
+                {
+                    Console.WriteLine($"Found device: {device}");
+                    Devices.Add(device);
+                }
+            }      
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

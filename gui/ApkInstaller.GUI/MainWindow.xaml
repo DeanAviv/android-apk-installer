@@ -12,7 +12,13 @@
         <!-- Info Box -->
         <Border Grid.Row="0" BorderBrush="White" BorderThickness="1" Margin="0,0,0,10" Padding="10">
             <StackPanel>
-                <TextBlock Text="Welcome to the Android APK Installer!" FontSize="16" FontWeight="Bold" Foreground="White" Margin="0,0,0,10"/>
+                <TextBlock Text="{Binding StatusMessage}" 
+           FontSize="16" 
+           FontWeight="Bold" 
+           Foreground="White" 
+           Margin="0,0,0,10"
+           TextWrapping="Wrap"/>
+
                 <TextBlock Text="Follow these steps to start:" FontSize="12" FontWeight="Bold" Foreground="White" Margin="0,0,0,10"/>
                 <TextBlock TextWrapping="Wrap" Foreground="White" Background="Black" Margin="5,0,0,0" FontSize="14">
                     <Run Text="Step 1: Connect your Android device with USB debugging enabled." />
