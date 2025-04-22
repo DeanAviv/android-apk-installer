@@ -16,6 +16,7 @@ namespace ApkInstaller.GUI
         public MainWindowViewModel()
         {
             RefreshDevicesCommand = new RelayCommand(RefreshDevices);
+            RefreshDevices(); // Automatically scan devices on startup
         }
 
         private void RefreshDevices()
